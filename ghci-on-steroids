@@ -1,0 +1,279 @@
+-- :! ghc --version | grep -F 7.10.3
+
+-- <6.10> :set prompt ""
+-- <7.8> :set prompt2 ""
+-- <caret> :set prompt "> "
+-- <caret> :set prompt2 "> "
+-- <lambda> :set prompt "\ESC[92m\x2500\x2500\x2500\x2500\x2500\x2500\x27e2 \ESC[1m\x3bb\ESC[22m \x27e3\x2500\x2500\x2500\x2500\x2500\x2500\ESC[0m\n"
+-- <lambda> :set prompt2 ""
+-- <lenny> :set prompt "\ESC[37m\x2508\x2504\x254c\x2500\x254c\x2504\x2508 \ESC[93m\x03c2( \x361\ESC[92;1m\xb0\ESC[91m \x35c\ESC[93;22m\x296 \x361\ESC[32;1m\xb0\ESC[93;22m)\x0242\ESC[37m \x2508\x2504\x254c\x2500\x254c\x2504\x2508\ESC[0m\n"
+-- <lenny> :set prompt2 ""
+-- <disapproval> :set prompt "\ESC[0m \ESC[90;40m\x2598\x259e\x2599\x2588\ESC[37;100m\x2598\x259e\x2599\x2588\ESC[0m \ESC[37;1m\x0ca0_\x0ca0\ESC[0m \ESC[37;100m\x2588\x259c\x259e\x2597\ESC[90;40m\x2588\x259c\x259e\x2597\ESC[0m\n"
+-- <disapproval> :set prompt2 ""
+-- <form> :set prompt "\ESC[37;100;1m\x2610 Not Haskell\ESC[0m\n\ESC[37;100;1m\x2611 Haskell    \ESC[0m\n"
+-- <form> :set prompt2 ""
+
+-- <ed> :set editor ed
+-- <nano> :set editor nano
+-- <vim> :set editor vim
+-- <emacs> :set editor emacs
+
+-- <6.8> <harmless> :seti -XArrows
+-- <6.8> <harmless> :seti -XBangPatterns
+-- <6.8> <worrying> :seti -XCPP
+-- <6.8> <worrying> :seti -XConstrainedClassMethods
+-- <6.8> <harmless> :seti -XDeriveDataTypeable
+-- <6.8> <worrying> :seti -XDisambiguateRecordFields
+-- <6.8> <harmless> :seti -XEmptyDataDecls
+-- <6.8> <worrying> :seti -XExistentialQuantification
+-- <6.8> <worrying> :seti -XExtendedDefaultRules
+-- <6.8> <harmless> :seti -XFlexibleContexts
+-- <6.8> <harmless> :seti -XFlexibleInstances
+-- <6.8> <worrying> :seti -XForeignFunctionInterface
+-- <6.8> <harmless> :seti -XFunctionalDependencies
+-- <6.8> <worrying> :seti -XGADTs
+-- <6.8> <worrying> :seti -XGeneralizedNewtypeDeriving
+-- <6.8-7.2> :seti -XGenerics
+-- <6.8> <worrying> :seti -XImplicitParams
+-- <6.8> <useless> :seti -XNoImplicitPrelude
+-- <6.8> <risky> :seti -XIncoherentInstances
+-- <6.8> <harmless> :seti -XKindSignatures
+-- <6.8> <harmless> :seti -XLiberalTypeSynonyms
+-- <6.8> <harmless> :seti -XMagicHash
+-- <6.8-7.10> :seti -XMonoPatBinds
+-- <6.8> <harmless> :seti -XMultiParamTypeClasses
+-- <6.8> <harmless> :seti -XNamedFieldPuns
+-- <6.8-7.2> :seti -XNewQualifiedOperators
+-- <6.8> <required> :seti -XNoMonomorphismRestriction
+-- <6.8-7.10> :seti -XOverlappingInstances
+-- <6.8> <varying> :seti -XOverloadedStrings
+-- <6.8-7.2> :seti -XPArr
+-- <6.8> <harmless> :seti -XParallelListComp
+-- <6.8> <harmless> :seti -XPatternGuards
+-- <6.8-7.0> :seti -XPatternSignatures
+-- <6.8> <worrying> :seti -XPolymorphicComponents
+-- <6.8-8.0> :seti -XRank2Types
+-- <6.8> <harmless> :seti -XRankNTypes
+-- <6.8-7.0> :seti -XRecordPuns
+-- <6.8> <harmless> :seti -XRecordWildCards
+-- <6.8> <harmless> :seti -XRecursiveDo
+-- <6.8> <harmless> :seti -XRelaxedPolyRec
+-- <6.8> <harmless> :seti -XScopedTypeVariables
+-- <6.8> <harmless> :seti -XStandaloneDeriving
+-- <6.8> <worrying> :seti -XTemplateHaskell
+-- <6.8> <harmless> :seti -XTypeFamilies
+-- <6.8> <harmless> :seti -XTypeOperators
+-- <6.8> <worrying> :seti -XTypeSynonymInstances
+-- <6.8> <harmless> :seti -XUnboxedTuples
+-- <6.8> <worrying> :seti -XUndecidableInstances
+-- <6.8> <annoying> :seti -XUnicodeSyntax
+-- <6.8> <worrying> :seti -XUnliftedFFITypes
+-- <6.10> <worrying> :seti -XImpredicativeTypes
+-- <6.10> <harmless> :seti -XPackageImports
+-- <6.10> <harmless> :seti -XPostfixOperators
+-- <6.10> <harmless> :seti -XQuasiQuotes
+-- <6.10> <harmless> :seti -XTransformListComp
+-- <6.10> <harmless> :seti -XViewPatterns
+-- <6.12> <harmless> :seti -XDeriveFoldable
+-- <6.12> <harmless> :seti -XDeriveFunctor
+-- <6.12> <harmless> :seti -XDeriveTraversable
+-- <6.12-7.8> :seti -XDoRec
+-- <6.12> <harmless> :seti -XExplicitForAll
+-- <6.12> <worrying> :seti -XGHCForeignImportPrim
+-- <6.12> <worrying> :seti -XMonoLocalBinds
+-- <6.12> <useless> :seti -XNPlusKPatterns
+-- <6.12> <harmless> :seti -XTupleSections
+-- <7.0> <worrying> :seti -XAlternativeLayoutRule
+-- <7.0> <worrying> :seti -XAlternativeLayoutRuleTransitional
+-- <7.0-7.10> :seti -XDatatypeContexts
+-- <7.0> <annoying> :seti -XDoAndIfThenElse
+-- <7.0> <useless> :seti -XHaskell98
+-- <7.0> <useless> :seti -XHaskell2010
+-- <7.0> <harmless> :seti -XRebindableSyntax
+-- <7.2> <worrying> :seti -XDefaultSignatures
+-- <7.2> <harmless> :seti -XDeriveGeneric
+-- <7.2> <harmless> :seti -XGADTSyntax
+-- <7.2> <worrying> :seti -XInterruptibleFFI
+-- <7.2> <harmless> :seti -XMonadComprehensions
+-- <7.2> <harmless> :seti -XNondecreasingIndentation
+-- <7.2> <worrying> :seti -XParallelArrays
+-- <7.2> <worrying> :seti -XRelaxedLayout
+-- <7.2> <useless> :seti -XSafe
+-- <7.2-7.4> :seti -XSafeImports
+-- <7.2> <useless> :seti -XTrustworthy
+-- <7.4> <worrying> :seti -XCApiFFI
+-- <7.4> <worrying> :seti -XConstraintKinds
+-- <7.4> <worrying> :seti -XDataKinds
+-- <7.4> <worrying> :seti -XPolyKinds
+-- <7.4> <harmless> :seti -XTraditionalRecordSyntax
+-- <7.4> <useless> :seti -XUnsafe
+-- <7.6> <harmless> :seti -XExplicitNamespaces
+-- <7.6> <harmless> :seti -XInstanceSigs
+-- <7.6> <harmless> :seti -XLambdaCase
+-- <7.6> <harmless> :seti -XMultiWayIf
+-- <7.8> <worrying> :seti -XAllowAmbiguousTypes
+-- <7.8> <harmless> :seti -XAutoDeriveTypeable
+-- <7.8> <harmless> :seti -XEmptyCase
+-- <7.8> <worrying> :seti -XJavaScriptFFI
+-- <7.8> <harmless> :seti -XNegativeLiterals
+-- <7.8-7.10> :seti -XNullaryTypeClasses
+-- <7.8> <harmless> :seti -XNumDecimals
+-- <7.8> <varying> :seti -XOverloadedLists
+-- <7.8> <harmless> :seti -XPatternSynonyms
+-- <7.8> <harmless> :seti -XRoleAnnotations
+-- <7.10> <harmless> :seti -XBinaryLiterals
+-- <7.10> <worrying> :seti -XDeriveAnyClass
+-- <7.10> <worrying> :seti -XNamedWildCards
+-- <7.10> <harmless> :seti -XPartialTypeSignatures
+-- <7.10> <worrying> :seti -XStaticPointers
+-- <8.0> :seti -XApplicativeDo
+-- <8.0> :seti -XDeriveLift
+-- <8.0> :seti -XDuplicateRecordFields
+-- <8.0> :seti -XMonadFailDesugaring
+-- <8.0> :seti -XOverloadedLabels
+-- <8.0> :seti -XStrict
+-- <8.0> :seti -XStrictData
+-- <8.0> :seti -XTemplateHaskellQuotes
+-- <8.0> :seti -XTypeApplications
+-- <8.0> :seti -XTypeFamilyDependencies
+-- <8.0> :seti -XTypeInType
+-- <8.0> :seti -XUndecidableSuperClasses
+-- <HEAD> :seti -XUnboxedSums
+
+:seti -XPackageImports
+-- <basic> import "base" Control.Applicative as Applicative
+-- <basic> import "base" Control.Arrow as Arrow
+-- <basic> import "base" Control.Category as Category hiding ((.), id)
+-- <basic> import qualified "base" Control.Category as Category ((.), id)
+-- <basic> import "base" Control.Concurrent as Concurrent
+-- <basic> import "base" Control.Concurrent.Chan as Chan
+-- <basic> import "base" Control.Concurrent.MVar as MVar
+-- <basic> import "base" Control.Concurrent.QSem as QSem
+-- <basic> import "base" Control.Concurrent.QSemN as QSemN
+-- <basic> import "base" Control.Exception as Exception
+-- <basic> import "base" Control.Monad as Monad
+-- <basic> import "base" Control.Monad.Fix as Fix
+-- <basic> import "base" Control.Monad.ST as ST
+-- <basic> import qualified "base" Control.Monad.ST.Lazy as STLazy
+-- <basic> import "base" Control.Monad.Zip as Zip
+-- <basic> import "base" Data.Bifunctor as Bifunctor hiding (first, second)
+-- <basic> import qualified "base" Data.Bifunctor as Bifunctor (first, second)
+-- <basic> import "base" Data.Bits as Bits
+-- <basic> import "base" Data.Bool as Bool
+-- <basic> import "base" Data.Char as Char
+-- <basic> import "base" Data.Coerce as Coerce
+-- <basic> import "base" Data.Complex as Complex
+-- <basic> import "base" Data.Data as Data
+-- <basic> import "base" Data.Dynamic as Dynamic
+-- <basic> import "base" Data.Either as Either
+-- <basic> import "base" Data.Eq as Eq
+-- <basic> import "base" Data.Fixed as Fixed
+-- <basic> import "base" Data.Foldable as Foldable
+-- <basic> import "base" Data.Function as Function hiding ((.), id)
+-- <basic> import qualified "base" Data.Function as Function ((.), id)
+-- <basic> import "base" Data.Functor as Functor
+-- <basic> import "base" Data.Functor.Identity as Identity
+-- <basic> import "base" Data.IORef as IORef
+-- <basic> import "base" Data.Int as Int
+-- <basic> import "base" Data.Ix as Ix
+-- <basic> import "base" Data.List as List
+-- <basic> import "base" Data.Maybe as Maybe
+-- <basic> import "base" Data.Monoid as Monoid
+-- <basic> import "base" Data.Ord as Ord
+-- <basic> import "base" Data.Proxy as Proxy
+-- <basic> import "base" Data.Ratio as Ratio
+-- <basic> import "base" Data.STRef as STRef
+-- <basic> import qualified "base" Data.STRef.Lazy as STRefLazy
+-- <basic> import "base" Data.String as String
+-- <basic> import "base" Data.Traversable as Traversable
+-- <basic> import "base" Data.Tuple as Tuple
+-- <basic> import "base" Data.Typeable as Typeable
+-- <basic> import "base" Data.Unique as Unique
+-- <basic> import "base" Data.Version as Version
+-- <basic> import "base" Data.Void as Void
+-- <basic> import "base" Data.Word as Word
+-- <basic> import "base" Debug.Trace as Trace
+-- <basic> import "base" Numeric as Numeric
+-- <basic> import "base" Numeric.Natural as Natural
+-- <basic> import "base" Prelude
+-- <basic> import "base" System.CPUTime as CPUTime
+-- <basic> import "base" System.Environment as Environment
+-- <basic> import "base" System.Exit as Exit
+-- <basic> import "base" System.IO as IO
+-- <basic> import "base" System.IO.Error as Error
+-- <basic> import "base" System.IO.Unsafe as Unsafe
+-- <basic> import "base" System.Info as Info
+-- <basic> import "base" System.Mem as Mem
+-- <basic> import "base" System.Timeout as Timeout
+-- <basic> import "base" Text.Printf as Printf
+-- <basic> import "base" Text.Read as Read hiding ((+++), get, lift)
+-- <basic> import qualified "base" Text.Read as Read ((+++), get, lift)
+-- <basic> import "base" Text.Show as Show
+-- <basic> import "base" Text.Show.Functions as Functions
+-- <basic> import "base" Unsafe.Coerce as Coerce
+-- <basic> import "text" Data.Text as Text (Text)
+-- <basic> import qualified "text" Data.Text as Text
+-- <basic> import qualified "text" Data.Text.IO as Text
+-- <basic> import qualified "text" Data.Text.Lazy as TextLazy
+-- <basic> import qualified "text" Data.Text.Lazy.IO as TextLazy
+-- <basic> import "containers" Data.Graph as Graph (Graph)
+-- <basic> import qualified "containers" Data.Graph as Graph
+-- <basic> import "containers" Data.IntMap as IntMap (IntMap)
+-- <basic> import qualified "containers" Data.IntMap as IntMap
+-- <basic> import qualified "containers" Data.IntMap.Strict as IntMapStrict
+-- <basic> import "containers" Data.IntSet as IntSet (IntSet)
+-- <basic> import qualified "containers" Data.IntSet as IntSet
+-- <basic> import "containers" Data.Map as Map (Map)
+-- <basic> import qualified "containers" Data.Map as Map
+-- <basic> import qualified "containers" Data.Map.Strict as MapStrict
+-- <basic> import "containers" Data.Sequence as Seq (Seq)
+-- <basic> import qualified "containers" Data.Sequence as Seq
+-- <basic> import "containers" Data.Set as Set (Set)
+-- <basic> import qualified "containers" Data.Set as Set
+-- <basic> import "containers" Data.Tree as Tree (Tree)
+-- <basic> import qualified "containers" Data.Tree as Tree
+-- <basic> import "vector" Data.Vector as Vector (Vector)
+-- <basic> import qualified "vector" Data.Vector as Vector
+-- <basic> import qualified "vector" Data.Vector.Generic as VectorGeneric
+-- <basic> import qualified "vector" Data.Vector.Primitive as VectorPrimitive
+-- <basic> import qualified "vector" Data.Vector.Storable as VectorStorable
+-- <basic> import qualified "vector" Data.Vector.Unboxed as VectorUnboxed
+-- <extra> import "data-fix" Data.Fix as Fix
+-- <extra> import "random" System.Random as Random hiding (split)
+-- <extra> import qualified "random" System.Random as Random (split)
+-- <extra> import "distributive" Data.Distributive as Distributive
+-- <extra> import "split" Data.List.Split as Split
+-- <extra> import "directory" System.Directory as Directory
+-- <trans> import "mtl" Control.Monad.Cont as Cont
+-- <trans> import "mtl" Control.Monad.Except as Except
+-- <trans> import "mtl" Control.Monad.Identity as Identity
+-- <trans> import "mtl" Control.Monad.List as List
+-- <trans> import "mtl" Control.Monad.RWS as RWS
+-- <trans> import qualified "mtl" Control.Monad.RWS.Strict as RWSStrict
+-- <trans> import "mtl" Control.Monad.Reader as Reader
+-- <trans> import "mtl" Control.Monad.State as State
+-- <trans> import qualified "mtl" Control.Monad.State.Strict as StateStrict
+-- <trans> import "mtl" Control.Monad.Trans as Trans
+-- <trans> import "mtl" Control.Monad.Writer as Writer
+-- <trans> import qualified "mtl" Control.Monad.Writer.Strict as WriterStrict
+-- <trans> import qualified "transformers" Control.Applicative.Backwards as Applicative
+-- <trans> import qualified "transformers" Control.Applicative.Lift as Applicative
+-- <trans> import qualified "transformers" Data.Functor.Classes as Functor
+-- <trans> import qualified "transformers" Data.Functor.Compose as Functor
+-- <trans> import qualified "transformers" Data.Functor.Constant as Functor
+-- <trans> import qualified "transformers" Data.Functor.Product as Functor
+-- <trans> import qualified "transformers" Data.Functor.Reverse as Functor
+-- <trans> import qualified "transformers" Data.Functor.Sum as Functor
+-- <qc> import qualified "QuickCheck" Test.QuickCheck as QC
+-- <lens> import "microlens-platform" Lens.Micro.Platform as Lens
+-- <parsec> import "megaparsec" Text.Megaparsec as Megaparsec
+-- <dim> import "dimensional" Numeric.Units.Dimensional hiding ((*), (**), (+), (-), (/), (^), abs, acos, acosh, asin, asinh, atan, atan2, atanh, cos, cosh, exp, log, negate, pi, sin, sinh, sqrt, sum, tan, tanh)
+-- <dim> import qualified "dimensional" Numeric.Units.Dimensional as Dim ((*), (**), (+), (-), (/), (^), abs, acos, acosh, asin, asinh, atan, atan2, atanh, cos, cosh, exp, log, negate, pi, sin, sinh, sqrt, sum, tan, tanh)
+-- <dim> import "dimensional" Numeric.Units.Dimensional.Coercion as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.Dimensions as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.Dynamic as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.Functor as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.NonSI as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.Quantities as Dim
+-- <dim> import "dimensional" Numeric.Units.Dimensional.SIUnits hiding (second)
+-- <dim> import qualified "dimensional" Numeric.Units.Dimensional.SIUnits as Dim (second)

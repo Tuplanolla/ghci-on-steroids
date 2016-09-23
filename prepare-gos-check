@@ -1,0 +1,42 @@
+#! /bin/sh
+
+# $ prepare-gos-check < ~/.ghci > GHCIOnSteroids.hs
+
+temp=$(mktemp) || exit 1
+trap "rm -f \"$temp\"" EXIT
+cat > "$temp"
+
+begin='^'
+import='\(import\)'
+qualified='\( \+qualified\)'
+maybepack='\( \+\| *"\('
+identifier='[-.0-9A-Za-z]\+'
+age='\)" *\)'
+module='\([^ ]\+\)'
+as='\( \+as \+\([^ ]\+\)\)'
+hiding='\( \+hiding\)'
+names='\( *(\(.*\))\)'
+eh='\?'
+end='$'
+before="$begin$import$qualified$eh$maybepack$identifier$age"
+after="$hiding$eh$names$eh$end"
+no="$before$module$after"
+yes="$before$module$as$after"
+perhaps="$before$module$as$eh$after"
+
+echo 'module GHCIOnSteroids ('
+{ { grep "$no" "$temp" | sed "s/$no/module \5,/"
+    grep "$yes" "$temp" | sed "s/$yes/module \7,/"
+  } | LC_ALL=C sort -u
+  echo 'ghciOnSteroids) where'
+} | sed 's/^/  /'
+echo
+grep "$perhaps" "$temp"
+echo
+echo 'ghciOnSteroids :: Integer'
+echo "ghciOnSteroids = $(date +%s)"
+echo
+echo 'main :: IO ()'
+echo 'main = return ()'
+
+rm -f "$temp"

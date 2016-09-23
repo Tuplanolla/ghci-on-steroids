@@ -1,0 +1,39 @@
+#! /bin/sh
+
+# $ prepare-gos-packages package-1 ... package-$n < ~/.ghci-on-steroids > ~/.ghci
+
+temp=$(mktemp) || exit 1
+trap "rm -f \"$temp\"" EXIT
+cat > "$temp"
+
+begin='^'
+comment='\(-- \+\)'
+import='\(import\)'
+qualified='\( \+qualified\)'
+pack='\( *"\('
+identifier='[-.0-9A-Za-z]\+'
+age='\)" *\)'
+module='\([^ ]\+\)'
+as='\( \+as \+\([^ ]\+\)\)'
+hiding='\( \+hiding\)'
+names='\( *(\(.*\))\)'
+eh='\?'
+end='$'
+check="$begin$identifier$end"
+leading="$begin$comment$import$qualified$eh$pack"
+trailing="$age$module$as$eh$hiding$eh$names$eh$end"
+
+for arg
+do
+  if printf '%s' "$arg" | grep -qv "$check"
+  then
+    echo "Invalid package name '$arg'." 1>&2
+    exit 1
+  fi
+done
+
+for arg
+do printf '%s\0%s\0' -e "s/$leading$arg$trailing/\2\3\4\6\7/"
+done | xargs -0 sed "$temp" -e ''
+
+rm -f "$temp"

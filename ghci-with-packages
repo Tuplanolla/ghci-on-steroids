@@ -1,0 +1,5 @@
+#! /bin/sh
+
+# $ ghci-with-packages package-1 ... package-$n
+
+gos-packages -- $@ && ghci -v0

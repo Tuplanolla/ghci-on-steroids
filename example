@@ -1,0 +1,14 @@
+#! /bin/sh
+
+# $ example
+
+ghci-with-tags $( \
+{ for n in $(seq 1 14)
+  do echo lambda
+  done
+  echo lenny
+  echo disapproval
+} | shuf -n 1
+echo vim
+echo required harmless varying
+echo basic trans)

@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# $ gos-check
+# $ gos-check ~/.ghci
+
+prepare-gos-check < "${1-"$HOME/.ghci"}" | runhaskell -XPackageImports

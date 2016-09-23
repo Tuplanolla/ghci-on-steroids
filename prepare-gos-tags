@@ -1,0 +1,34 @@
+#! /bin/sh
+
+# $ prepare-gos-tags tag-1 ... tag-$n < ~/.ghci-on-steroids > ~/.ghci
+
+temp=$(mktemp) || exit 1
+trap "rm -f \"$temp\"" EXIT
+cat > "$temp"
+
+begin='^'
+comment='\(-- \+\)'
+tag="\(<\("
+identifier='[-.0-9A-Za-z]\+'
+ger="\)> \+\)"
+anything='\(.*\)'
+s='*'
+end='$'
+confirm="$begin$identifier$end"
+prior="$begin$comment$tag$identifier$ger$s$tag"
+posterior="$ger$tag$identifier$ger$s$anything$end"
+
+for arg
+do
+  if printf '%s' "$arg" | grep -qv "$confirm"
+  then
+    echo "Invalid tag name '$arg'." 1>&2
+    exit 1
+  fi
+done
+
+for arg
+do printf '%s\0%s\0' -e "s/$prior$arg$posterior/\8/"
+done | xargs -0 sed "$temp" -e ''
+
+rm -f "$temp"

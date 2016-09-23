@@ -1,0 +1,69 @@
+#! /bin/sh
+
+# $ gos-packages
+# $ gos-packages ~/.ghci-on-steroids
+# $ gos-packages ~/.ghci ~/.ghci-on-steroids
+# $ gos-packages -- package-1 ... package-$n
+# $ gos-packages ~/.ghci-on-steroids -- package-1 ... package-$n
+# $ gos-packages ~/.ghci ~/.ghci-on-steroids -- package-1 ... package-$n
+
+optional=0
+for arg
+do
+  if test '--' = "$arg"
+  then break
+  else optional=$(expr 1 + $optional)
+  fi
+done
+
+target="$HOME/.ghci"
+case $optional in
+  2)
+    target="$1"
+    source="$2"
+    ;;
+  1)
+    source="$1"
+    ;;
+  0)
+    source="$target-on-steroids"
+    ;;
+  *)
+    echo "Too many arguments ($optional)." 1>&2
+    exit 1
+    ;;
+esac
+
+shift $optional
+if test '--' = "$1"
+then shift
+fi
+
+header='-- -*- generator: ghci-on-steroids -*-'
+if test 0 -eq "$?" -a "$header" != "$(head -n 1 "$target" 2> /dev/null)"
+then
+  echo "Will not overwrite '$target'." 1>&2
+  exit 1
+fi
+
+begin='^'
+name='[-.0-9A-Za-z]\+'
+end='$'
+check="$begin$name$end"
+
+args=
+for arg
+do
+  if printf '%s' "$arg" | grep -qv "$check"
+  then
+    echo "Invalid package '$arg'." 1>&2
+    exit 1
+  fi
+  args="$args $arg"
+done
+
+{ printf "%s\n" "$header"
+  prepare-gos-packages $args < "$source"
+} > "$target"
+
+chmod 644 "$target"

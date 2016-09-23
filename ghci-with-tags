@@ -1,0 +1,5 @@
+#! /bin/sh
+
+# $ ghci-with-tags tag-1 ... tag-$n
+
+gos-tags -- $@ && ghci -v0
