@@ -44,7 +44,7 @@
 -- <6.8-7.2> :seti -XNewQualifiedOperators
 -- <6.8> <crucial> :seti -XNoMonomorphismRestriction
 -- <6.8-7.10> :seti -XOverlappingInstances
--- <6.8> <varying> :seti -XOverloadedStrings
+-- <6.8> <annoying> :seti -XOverloadedStrings
 -- <6.8-7.2> :seti -XPArr
 -- <6.8> <harmless> :seti -XParallelListComp
 -- <6.8> <harmless> :seti -XPatternGuards
@@ -116,7 +116,7 @@
 -- <7.8> <harmless> :seti -XNegativeLiterals
 -- <7.8-7.10> :seti -XNullaryTypeClasses
 -- <7.8> <harmless> :seti -XNumDecimals
--- <7.8> <varying> :seti -XOverloadedLists
+-- <7.8> <annoying> :seti -XOverloadedLists
 -- <7.8> <harmless> :seti -XPatternSynonyms
 -- <7.8> <harmless> :seti -XRoleAnnotations
 -- <7.10> <harmless> :seti -XBinaryLiterals

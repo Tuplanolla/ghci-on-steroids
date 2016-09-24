@@ -1,7 +1,7 @@
 # GHCi on Steroids
 
 This shell script collection for configuring GHCi on the fly was
-written by Sampsa "Tuplanolla" Kiiskinen between 2016-09-21 and 2016-09-23.
+written by Sampsa "Tuplanolla" Kiiskinen between 2016-09-21 and 2016-09-24.
 Look inside the files `ghci-on-steroids` and `example`
 to see how the scripts are meant to be used.
 

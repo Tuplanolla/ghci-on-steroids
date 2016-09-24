@@ -10,5 +10,5 @@ ghci-with-tags $( \
   echo disapproval
 } | shuf -n 1
 echo vim
-echo crucial harmless varying
+echo crucial harmless
 echo basic trans)
