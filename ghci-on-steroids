@@ -1,7 +1,5 @@
 -- :! ghc --version | grep -F 7.10.3
 
--- <6.10> :set prompt ""
--- <7.8> :set prompt2 ""
 -- <caret> :set prompt "> "
 -- <caret> :set prompt2 "> "
 -- <lambda> :set prompt "\ESC[92m\x2500\x2500\x2500\x2500\x2500\x2500\x27e2 \ESC[1m\x3bb\ESC[22m \x27e3\x2500\x2500\x2500\x2500\x2500\x2500\ESC[0m\n"
@@ -44,7 +42,7 @@
 -- <6.8> <harmless> :seti -XMultiParamTypeClasses
 -- <6.8> <harmless> :seti -XNamedFieldPuns
 -- <6.8-7.2> :seti -XNewQualifiedOperators
--- <6.8> <required> :seti -XNoMonomorphismRestriction
+-- <6.8> <crucial> :seti -XNoMonomorphismRestriction
 -- <6.8-7.10> :seti -XOverlappingInstances
 -- <6.8> <varying> :seti -XOverloadedStrings
 -- <6.8-7.2> :seti -XPArr
@@ -141,6 +139,7 @@
 -- <HEAD> :seti -XUnboxedSums
 
 :seti -XPackageImports
+
 -- <basic> import "base" Control.Applicative as Applicative
 -- <basic> import "base" Control.Arrow as Arrow
 -- <basic> import "base" Control.Category as Category hiding ((.), id)

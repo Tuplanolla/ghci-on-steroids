@@ -81,3 +81,10 @@ Composing the internal procedures is possible.
     $ prepare-gos-check < ~/.ghci > GHCIOnSteroids.hs
     $ prepare-gos-packages package-1 ... package-$n < ~/.ghci-on-steroids > ~/.ghci
     $ prepare-gos-tags tag-1 ... tag-$n < ~/.ghci-on-steroids > ~/.ghci
+
+## Known Issues
+
+Both `gos-packages` and `gos-tags`
+require each import or tagged thing to occupy exactly one line,
+because they are implemented with line-oriented core utilities.
+Such is life with shell scripts.
