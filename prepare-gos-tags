@@ -30,5 +30,3 @@ done
 for arg
 do printf '%s\0%s\0' -e "s/$prior$arg$posterior/\8/"
 done | xargs -0 sed "$temp" -e ''
-
-rm -f "$temp"

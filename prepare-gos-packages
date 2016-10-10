@@ -35,5 +35,3 @@ done
 for arg
 do printf '%s\0%s\0' -e "s/$leading$arg$trailing/\2\3\4\6\7/"
 done | xargs -0 sed "$temp" -e ''
-
-rm -f "$temp"

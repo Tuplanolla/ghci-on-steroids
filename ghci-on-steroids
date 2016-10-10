@@ -2,6 +2,8 @@
 
 -- <caret> :set prompt "> "
 -- <caret> :set prompt2 "> "
+-- <please> :set prompt "please "
+-- <please> :set prompt2 "and    "
 -- <lambda> :set prompt "\ESC[92m\x2500\x2500\x2500\x2500\x2500\x2500\x27e2 \ESC[1m\x3bb\ESC[22m \x27e3\x2500\x2500\x2500\x2500\x2500\x2500\ESC[0m\n"
 -- <lambda> :set prompt2 ""
 -- <lenny> :set prompt "\ESC[37m\x2508\x2504\x254c\x2500\x254c\x2504\x2508 \ESC[93m\x03c2( \x361\ESC[92;1m\xb0\ESC[91m \x35c\ESC[93;22m\x296 \x361\ESC[32;1m\xb0\ESC[93;22m)\x0242\ESC[37m \x2508\x2504\x254c\x2500\x254c\x2504\x2508\ESC[0m\n"
@@ -15,6 +17,8 @@
 -- <nano> :set editor nano
 -- <vim> :set editor vim
 -- <emacs> :set editor emacs
+
+-- <vexing> let ifThenElse p c a | p = c | otherwise = a
 
 -- <6.8> <harmless> :seti -XArrows
 -- <6.8> <harmless> :seti -XBangPatterns
@@ -67,7 +71,7 @@
 -- <6.8> <annoying> :seti -XUnicodeSyntax
 -- <6.8> <worrying> :seti -XUnliftedFFITypes
 -- <6.10> <worrying> :seti -XImpredicativeTypes
--- <6.10> <harmless> :seti -XPackageImports
+-- <6.10> <crucial> :seti -XPackageImports
 -- <6.10> <harmless> :seti -XPostfixOperators
 -- <6.10> <harmless> :seti -XQuasiQuotes
 -- <6.10> <harmless> :seti -XTransformListComp
@@ -87,7 +91,7 @@
 -- <7.0> <annoying> :seti -XDoAndIfThenElse
 -- <7.0> <useless> :seti -XHaskell98
 -- <7.0> <useless> :seti -XHaskell2010
--- <7.0> <harmless> :seti -XRebindableSyntax
+-- <7.0> <vexing> :seti -XRebindableSyntax
 -- <7.2> <worrying> :seti -XDefaultSignatures
 -- <7.2> <harmless> :seti -XDeriveGeneric
 -- <7.2> <harmless> :seti -XGADTSyntax
@@ -124,21 +128,19 @@
 -- <7.10> <worrying> :seti -XNamedWildCards
 -- <7.10> <harmless> :seti -XPartialTypeSignatures
 -- <7.10> <worrying> :seti -XStaticPointers
--- <8.0> :seti -XApplicativeDo
--- <8.0> :seti -XDeriveLift
--- <8.0> :seti -XDuplicateRecordFields
--- <8.0> :seti -XMonadFailDesugaring
--- <8.0> :seti -XOverloadedLabels
--- <8.0> :seti -XStrict
--- <8.0> :seti -XStrictData
--- <8.0> :seti -XTemplateHaskellQuotes
--- <8.0> :seti -XTypeApplications
--- <8.0> :seti -XTypeFamilyDependencies
--- <8.0> :seti -XTypeInType
--- <8.0> :seti -XUndecidableSuperClasses
+-- <8.0> <harmless-later> :seti -XApplicativeDo
+-- <8.0> <harmless-later> :seti -XDeriveLift
+-- <8.0> <harmless-later> :seti -XDuplicateRecordFields
+-- <8.0> <useless-later> :seti -XMonadFailDesugaring
+-- <8.0> <harmless-later> :seti -XOverloadedLabels
+-- <8.0> <worrying-later> :seti -XStrict
+-- <8.0> <worrying-later> :seti -XStrictData
+-- <8.0> <harmless-later> :seti -XTemplateHaskellQuotes
+-- <8.0> <harmless-later> :seti -XTypeApplications
+-- <8.0> <harmless-later> :seti -XTypeFamilyDependencies
+-- <8.0> <worrying-later> :seti -XTypeInType
+-- <8.0> <worrying-later> :seti -XUndecidableSuperClasses
 -- <HEAD> :seti -XUnboxedSums
-
-:seti -XPackageImports
 
 -- <basic> import "base" Control.Applicative as Applicative
 -- <basic> import "base" Control.Arrow as Arrow
@@ -257,12 +259,11 @@
 -- <trans> import qualified "mtl" Control.Monad.Writer.Strict as WriterStrict
 -- <trans> import qualified "transformers" Control.Applicative.Backwards as Applicative
 -- <trans> import qualified "transformers" Control.Applicative.Lift as Applicative
--- <trans> import qualified "transformers" Data.Functor.Classes as Functor
--- <trans> import qualified "transformers" Data.Functor.Compose as Functor
--- <trans> import qualified "transformers" Data.Functor.Constant as Functor
--- <trans> import qualified "transformers" Data.Functor.Product as Functor
--- <trans> import qualified "transformers" Data.Functor.Reverse as Functor
--- <trans> import qualified "transformers" Data.Functor.Sum as Functor
+-- <trans> import qualified Data.Functor.Classes as Functor
+-- <trans> import qualified Data.Functor.Compose as Functor
+-- <trans> import qualified Data.Functor.Product as Functor
+-- <trans> import qualified Data.Functor.Reverse as Functor
+-- <trans> import qualified Data.Functor.Sum as Functor
 -- <qc> import qualified "QuickCheck" Test.QuickCheck as QC
 -- <lens> import "microlens-platform" Lens.Micro.Platform as Lens
 -- <parsec> import "megaparsec" Text.Megaparsec as Megaparsec

@@ -40,7 +40,8 @@ then shift
 fi
 
 header='-- -*- generator: ghci-on-steroids -*-'
-if test 0 -eq "$?" -a "$header" != "$(head -n 1 "$target" 2> /dev/null)"
+head="$(head -n 1 "$target" 2> /dev/null)"
+if test 0 -eq "$?" -a "$header" != "$head"
 then
   echo "Will not overwrite '$target'." 1>&2
   exit 1
